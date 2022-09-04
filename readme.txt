@@ -46,3 +46,16 @@ set-ExecutionPolicy RemoteSigned 然后输入y
 然后回车，选择vue3，然后不需要router历史，然后配置信息存放到package.json里面，然后不保存为模板
 然后他就开始自己创建项目
 项目创建完成后，提示你进入yeb目录，然后启动项目的命令是：npm run serve
+接下来我们用Hbuilder来完成前端的实现
+首先简单介绍一下文件
+node_modules是我们用到的依赖文件，通过npm install 就可以安装的
+public公用目录，里面有一个index文件，和一个vue的图标
+babel.config.js主要把es6转换成es5
+package.json整个项目的配置文件
+src下面的文件
+assets专门放一些资源
+components组件目录
+router路由目录
+views页面目录
+main.js整个程序的入口，里面的Vue.config.productionTip=false表示关闭浏览器对于环境的提示，开发环境等
+其中关于vue语法大家可以看我vue仓库里面的或者到官网了解
