@@ -59,3 +59,14 @@ router路由目录
 views页面目录
 main.js整个程序的入口，里面的Vue.config.productionTip=false表示关闭浏览器对于环境的提示，开发环境等
 其中关于vue语法大家可以看我vue仓库里面的或者到官网了解
+接下来正式开发项目
+使用ElementUI
+下载组件命令：npm i elment-ui -S
+其中 i就是install -S就是--save将模块安装到我们的项目目录下面，正式环境和开发环境
+这里因为我们用的是vue3所以不适配，因此我们需要下载element-plus
+引入和使用
+在main.js里面引用
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+Vue.use(ElementPlus)
+然后我们开始创建登陆界面
