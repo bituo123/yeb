@@ -62,7 +62,7 @@ main.js整个程序的入口，里面的Vue.config.productionTip=false表示关�
 接下来正式开发项目
 使用ElementUI
 vue2
-下载组件命令：npm i elment-ui -S
+下载组件命令：npm i element-ui -S
 其中 i就是install -S就是--save将模块安装到我们的项目目录下面，正式环境和开发环境
 import Vue from 'vue';
 import ElementUI from 'element-ui';
@@ -82,3 +82,38 @@ import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 Vue.use(ElementPlus)
 然后我们开始创建登陆界面
+删掉App.vue的代码，只保留id为app的div
+删掉views里面其他的文件，components里面的文件
+
+然后在views里面新建Login.vue文件
+在index.js里面配置路由
+接下来就是写简单的登陆表单，
+然后写登陆检验方法，校验规则
+https://element.eleme.cn/#/zh-CN/component/form
+差不多后，我们开始安装axios用来进行前后端通讯
+npm i axios -S
+然后由于需要不断请求数据，然后判断，很麻烦，所以我们需要进行封装
+为了省事
+所以新建utils目录，api.js文件
+里面写了拦截器，和一个json的post请求，然后检查登陆需要调用的接口，
+一个登陆的接口，一个验证码的接口
+然后这里我们遇到一个问题，跨域问题，8080要去调用8081接口
+我们通过node.js来转发我们的请求
+新建vue.config.js
+主要解决完跨域问题之后，我们开始准备前端登陆之后的跳转，我们这里跳转到home，需要新建一个home.vue文件，然后在方法里写明跳转
+这里有个知识点，router的push和replace的区别，replace替换，不可以退回，push可以退回，登陆成功我们选择replace
+再跳转之前我们需要验证tooken，
+然后我们需要一个请求拦截器，还是写在api里面，请求拦截器获取到cookie
+然后我们把postrequest等操作写在api里面进行，导入到mainjs里面，这样在调用这些方法的时候就可以全局使用
+之后我们进行home的布局
+用到了container的布局容器
+然后当我们使用了菜单布局的时候，在设置选择组件，希望点击之后展示到指定位置，而不是直接跳转页面，
+原因：因为我们app里面有一个routerview，所以默认跳转到app里面
+解决方法：我们在home的路由下面，加上children数组，放入我们的页面路由
+但是这种方法太麻烦，所以我们将菜单和路由数据统一，将路由数据渲染到菜单上面，然后我们在menu标签上去掉select方法，加上router属性，然后在需要循环的列表外面一层submenu里面写for循环，循环的对象是路由里面的孩子
+接下来我们实现菜单功能
+后端数据接口传递到前端
+菜单数据我们缓存到内存里，用到了vuex，所以下载
+npm i vuex -S
+但是我们用的是vue2，所以需要npm i vuex@3 -S
+写好store之后，我们需要封装一个菜单类，用来把后端传来的字符串转化为对象，
